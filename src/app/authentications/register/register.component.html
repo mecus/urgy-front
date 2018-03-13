@@ -1,0 +1,158 @@
+<div class="mobile-background">
+    <div class="register-container page-rule mobile-margin-top">
+        <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between active-color">
+                <mat-icon (click)="goBack()">arrow_back</mat-icon> 
+                <span class="mr-auto">Registration is quick and easy</span>
+                <!-- <span class="mr-auto">Congratulations!!</span> -->
+                <!-- <span (click)="closeX()">Close</span> -->
+                <mat-icon>account_circle</mat-icon> 
+            </li>
+        </ul>
+        <div class="jumbotron card search-head">
+            <!-- <h2>Registration is quick and easy</h2> -->
+            <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
+            <p>Enter your postcode to see products and offers available to you.</p>
+            <div class="search-postcode">
+                <label for="postcode"><strong>Post Code: </strong></label>
+                <mat-input-container class="example-full">
+                    <input matInput required placeholder="enter postcode" type="text" #postcode value={{setTempcode}}>
+                </mat-input-container>
+                <a mat-raised-button role="button" (click)="postCodeSearch(postcode.value)">Search</a> 
+            </div>
+            <p *ngIf="posterror" id="post-err">{{posterror}}</p>
+            <mat-progress-bar *ngIf="progressOn" [color]="accent" mode="indeterminate"></mat-progress-bar>
+
+        </div>
+
+        <div *ngIf="searchResult" class="search-result">
+            <div class="alert alert-success success" role="alert">
+                <strong>Congratulations!</strong> We can successfully deliver to your address <a class="alert-link">Continue with form below</a>.
+            </div>
+            
+        </div>
+        <div *ngIf="searchResultErr" class="search-result">
+            <div class="alert alert-info" role="alert">
+                <strong>Sorry!</strong> We can not deliver to your address at this time!!.
+            </div>
+        </div>
+        <div *ngIf="searchNotFound" class="search-result">
+            <div class="danger alert alert-danger" role="alert">
+                <strong>Sorry!</strong> Your address was not found!!.
+            </div>
+        </div>
+
+        <div class="request-form ">
+            <!-- *ngIf="searchResult" -->   
+            <form  novalidate class="registration-form" [formGroup]="newUser" (ngSubmit)="registerUser(newUser.value)">
+                <small id="errMsg" style="color:red" *ngIf="errMsg">{{errMsg}}</small>
+                <div class="jumbotron card form-sec-1">
+                    <p class="flex-container">
+                        <mat-form-field floatPlaceholder="never">
+                            <mat-select formControlName="title" placeholder="Select Title">
+                                <mat-option *ngFor="let title of titles" [value]="title">
+                                    {{ title }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </p>
+                    <table class="example-full-width" cellspacing="0">
+                        <tr class="flex-container">
+                            <td><mat-input-container class="example-full-width">
+                            <input formControlName="first_name" matInput placeholder="First name">
+                            </mat-input-container></td>
+                            <td><mat-input-container class="example-full-width">
+                            <input formControlName="last_name" matInput placeholder="Last Name">
+                            </mat-input-container></td>
+                        </tr>
+                    </table>
+                    <table class="example-full-width" cellspacing="0">
+                        <tr class="flex-container">
+                            <td><mat-input-container class="example-full-width">
+                            <span matPrefix><mat-icon>email</mat-icon> &nbsp;</span>
+                            <input formControlName="email" type="email" matInput placeholder="Email">
+                            </mat-input-container></td>
+                        </tr>
+
+                        <tr class="flex-container" formGroupName="telephone">
+                            <td><mat-input-container  class="example-full-width">
+                            <span matPrefix><mat-icon>contact_phone</mat-icon> &nbsp;</span>
+                            <input formControlName="home" type="hame" matInput placeholder="Home telephone">
+                            </mat-input-container></td>
+                            <td><mat-input-container  class="example-full-width">
+                            <span matPrefix><mat-icon>phone_iphone</mat-icon> &nbsp;</span>
+                            <input formControlName="mobile" type="mobile" matInput placeholder="Mobile">
+                            </mat-input-container></td>
+                        </tr>
+                        <tr class="flex-container">
+                            <td><mat-input-container class="example-full-width">
+                            <span matPrefix><mat-icon>lock_outline</mat-icon> &nbsp;</span>
+                            <input formControlName="password" type="password" matInput placeholder="enter password" [type]="hide ? 'password' : 'text'">
+                            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                            </mat-input-container></td>
+                            <td><mat-input-container class="example-full-width">
+                            <span matPrefix><mat-icon>lock_outline</mat-icon> &nbsp;</span>
+                            <input formControlName="confirmpassword" type="password" matInput placeholder="Confirm Password" [type]="hide ? 'password' : 'text'">
+                            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                            </mat-input-container></td>
+
+                        </tr>
+                    </table>
+                </div>
+                <!-- <p style="color:red" *ngIf="errMsg">{{errMsg}}</p> -->
+                <div class="">
+                    <div class="jumbotron more-info card" formGroupName="billing_address">
+                        <p>
+                            <mat-input-container class="example-full-width">
+                            <input formControlName="address" matInput placeholder="Address">
+                            </mat-input-container>
+                            <!-- <mat-input-container class="example-full-width">
+                            <input formControlName="address2" matInput placeholder="Address 2">
+                            </mat-input-container> -->
+                        </p>
+
+                        <table class="example-full-width" cellspacing="0"><tr>
+                            <td><mat-input-container class="example-full-width">
+                                <input formControlName="city" matInput placeholder="City">
+                            </mat-input-container></td>
+                            <td><mat-input-container class="example-full-width">
+                                <input formControlName="post_code" matInput placeholder="Postal Code" >
+                            </mat-input-container></td>
+                            <td><mat-input-container class="example-full-width">
+                                <input formControlName="country" matInput placeholder="Country">
+                            </mat-input-container></td>
+                           
+                        </tr></table>
+                    </div>
+
+                </div>
+                
+                <div class="jumbotron card contact-permit">
+                    <h2>Contact Permission</h2>
+                    <p>We'd love to send you money-off coupons, exclusive offers and the latest info from us by email, post, SMS, phone and other electronic means. We'll always treat your personal details with the utmost care and will never sell them to other companies for marketing purposes.</p>
+                    <mat-radio-group (change)="onChnage($event)">
+                        <mat-radio-button value="yes"><small>Yes please, I'd like to hear about offers and services.</small></mat-radio-button>
+                        <br>
+                        <mat-radio-button value="no"><small>No thanks, I am not interested</small></mat-radio-button>
+                    </mat-radio-group>
+                    <input hidden formControlName="contact_permission" matInput placeholder="Permission">
+                </div>
+                <div class="submit-terms">
+                    <mat-checkbox formControlName="terms" >I've read and accepted the Terms</mat-checkbox>
+                    <br>
+                    <mat-checkbox formControlName="age_limit">I'm over 18 years old</mat-checkbox>
+                    <div class="submit-button">
+                        <button  mat-raised-button type="submit">Register</button>
+                    </div>
+                </div>
+                <!--<div>
+                    <p>{{newUser.value | json}}</p>
+                    <p>iSvalid: {{newUser.valid | json}}</p>
+                    <p>Untouched: {{newUser.untouched | json}}</p>
+                    <p>Pristine: {{newUser.pristine | json}}</p>
+                    <p>Dirty: {{newUser.dirty | json}}</p>
+                </div>-->
+            </form>
+        </div>
+    </div>
+</div>

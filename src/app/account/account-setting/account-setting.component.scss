@@ -1,0 +1,101 @@
+.page-container{
+    min-height: 500px;
+}
+div.xpandable-panel{
+    h3{
+        font-family: 'Open Sans Light', sans-serif;
+        color: grey;
+    }
+    p{
+        margin: 0px;
+    }
+    small{ color: #FF9100;}
+}
+
+div.setting-container{
+    // display: flex;
+    margin-top: 20px;
+    h3{
+        font-family: 'Open Sans Light', sans-serif;
+        color: lightslategrey;
+    }
+}
+div.card{
+    flex: 2;
+    .edit-p-info{
+        margin-top: 20px;
+    }
+    #button{
+        margin-right: 20px;
+    }
+    .card-header{
+        padding: 0px;
+        margin: 0px;
+        padding: 10px 0px 0px 10px;
+    }
+}
+div.p-card-info{
+    padding: 20px;
+    border-left: 0px;
+    // flex: 1;
+    // width: 100%;
+    h3{
+        font-size: 14px;
+        margin: 0px;
+        margin: 10px 20px;
+    }
+    // a{
+    //     width: 150px;
+    //     margin: 0 auto;
+    //     margin-top: 20px;
+    // }
+    h1{
+        margin: 0 auto;
+        margin-bottom: 10px;
+    }
+}
+a.btn{
+    margin-right: 20px;
+}
+div.address-component{
+    margin: 20px 0px;
+    padding: 20px;
+}
+div.ac-address-container{
+    display: flex;
+
+    .ac-address-form{
+        flex: 1;
+        margin-right: 20px;
+    }
+    .ac-address-data{
+        padding: 10px;
+        flex: 1;
+        
+        h3{
+            font-size: 14px;
+            margin: 0px;
+            padding: 5px 0px;
+            
+        }
+        .address{
+            display: flex;
+            h2{
+                flex: 1;
+                margin: 0px;
+            }
+            h3{
+                flex: 3;
+                margin: 0px;
+            }
+        }
+    }
+}
+div.cc-card{
+    margin: 0 auto;
+    img{
+        margin-top: 10px;
+        width: 200px;
+        opacity: .5;
+    }
+}

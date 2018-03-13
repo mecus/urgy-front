@@ -1,0 +1,193 @@
+
+<!--Listing out the Category for query selection -->
+<div class="main-container dextop page-rule">
+  <div class="list-menu card">
+      <div class="container">
+        <div class="flex-container list-menu-container">
+          <div class="category-container-half">
+            <div class="category-inner flex-container">
+              <div class="first-cat">
+                  <ul>
+                    <li *ngFor="let ai of aisle$">
+                        <div class="cat-list" (click)="displayCategory(ai, $event)">
+                            {{ai.name}}
+                            <span class="arrow-icon">
+                              <i class="fa fa-angle-right" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                      </li>
+                  </ul>
+                </div>
+                <div *ngIf="category$ && category$.length" class="horizotal"></div>
+                <div class="second-cat">
+                  <ul>
+                      <li *ngFor="let cat of category$">
+                        <div class="sub-list" (click)="displayProducts(cat, $event)">
+                            {{cat.name}}
+                            <span class="arrow-icon">
+                              <i  class="fa fa-angle-right" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                      </li>
+                  </ul>
+                </div>
+              </div>
+          </div>
+          <div class="advert-container-half">
+              <nge-carousel
+                [images]="adverts">
+              </nge-carousel>
+          </div>
+          
+        </div><!--End of Row -->
+      </div><!--End of Container-->
+  </div><!--End of List Menu Section-->
+
+  <!--Main Page Content after category list-->
+  <!-- <div class="container" *ngIf="products">
+    <div class="page-wrapper row" [@loadproduct]="products">
+      <div class="main-content col col-lg-9">
+        <div class="row">
+          <div class="pd-item col col-xs-6 col-sm-6 col-lg-3" *ngFor="let product of products">
+            <mat-card class="example-card product">
+              <div [style.min-height.px]="60">
+                <img *ngIf="product.imageUrl !== undefined; else load" (click)="viewProduct(product)" mat-card-image  [src]="product.imageUrl">
+                <ng-template #load>waiting..</ng-template>
+              </div>
+              
+              <mat-card-content>
+                <p id="size">({{product.description.size}})</p>
+                <p id="title">{{product.name}}</p>
+                <p id="price">{{product.price | currency: 'GBP': 'true'}}</p>
+              </mat-card-content>
+              <mat-card-actions>
+                  <a  role="button" (click)="addToCart(product)"  mat-raised-button >ADD</a>
+              </mat-card-actions>
+              <div class="inCart-wrapper" *ngFor="let cart of carts$">
+                  <div *ngIf="cart.name == product.name">
+                    <p id="inCart">{{cart.qty}} in cart</p>
+                  </div>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+      <div class="side-bar col col-lg-3">
+        <widget-right></widget-right>
+        <div class="post-box card" *ngIf="cartErrorMsg">
+            <div class="card-body" >
+                  <p>{{cartErrorMsg}}</p>
+                  <mat-input-container>
+                      <input #postcode type="text" matInput name="postcode" placeholder="Enter Postcode">
+                  </mat-input-container>
+                  <a (click)="submitPostcode(postcode.value)" mat-raised-button>Submit</a>
+              </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <!-- <footer-menu></footer-menu> -->
+
+  <div class="container">
+    <div class="product-container flex-container" >
+        <div class="product-content">
+          <div class="sorting flex-container">
+            <div class="p-2-flex flex-container">
+                <p><strong>{{groupName}}</strong></p>
+                <span class="prod-count"><p>{{productCount}}</p></span>      
+            </div>
+            <!-- <div class="pagination-top p-2">
+                <mat-paginator [length]="products.length"
+                              [pageSize]="pageSize"
+                              [pageSizeOptions]="pageSizeOptions"
+                              (page)="pageEvent = $event">
+                </mat-paginator>
+              </div> -->
+            <div class="flex-container" id="sort-input">
+                <select  class="form-control" #sorted  placeholder="sorting">
+                  <option *ngFor="let sort of sorting" [value]="sort">
+
+                    {{sort}}
+                  </option>
+                </select>
+                <span><button (click)="sortProduct(sorted.value)" class="btn btn-primary">Go</button></span>
+            </div>
+          </div>
+
+          <div *ngIf="products" [@loadproduct]="products" class="product-list flex-container">
+            <div class="product-item" *ngFor="let product of products | paginate: {itemsPerPage: pageSize, currentPage: page}">
+                <mat-card class="example-card product">
+                  <div *ngIf="product.offer == 'yes'" class="shop-offer"><p>Offer</p></div>
+                  <div class="inyourcart" *ngFor="let cart of carts$">
+                    <mat-icon *ngIf="cart.name == product.name">shopping_cart</mat-icon>
+                    <span *ngIf="cart.name == product.name" class="cart-no">{{cart.qty}}</span>
+                  </div>
+                  <div [style.min-height.px]="60">
+                    <img *ngIf="product.imageUrl !== undefined; else load" (click)="viewProduct(product)" mat-card-image  [src]="product.imageUrl">
+                    <ng-template #load>waiting..</ng-template>
+                  </div>
+                  
+                  <mat-card-content>
+                   
+                    <h1 id="title">{{product.name}}</h1>
+                    <p id="size">( {{product.description.size}} )</p>
+                    <p id="price">{{product.price | currency: 'GBP': 'true'}}</p>
+                  </mat-card-content>
+                  <mat-card-actions>
+                      <a *ngIf="product.stock > 0"  role="button" color="primary" (click)="addToCart(product)"  mat-raised-button >Add</a>
+                      <a *ngIf="product.stock < 1"  role="button" style="background-color: red" [style.color]="'lightgray'" mat-raised-button >sorry!</a>
+                  </mat-card-actions>
+                  
+                  <div class="inCart-wrapper">
+                      <div class="inCart-select">
+                        <p *ngIf="product.stock > 0" id="inCart">{{product.stock}} in stock</p>
+                        <p [style.color]="'red'" *ngIf="product.stock < 1" id="inCart">Out of stock</p>
+                      </div>
+                  </div>
+                </mat-card>
+            </div>
+          </div>
+          <!-- Implementing pagination -->
+          <div class="pagination">
+            <pagination-controls (pageChange)="page = $event" class="pg-pagination"></pagination-controls>
+          </div>
+          
+          <!-- <div class="pagination">
+            <mat-paginator [length]="products.length"
+                          [pageSize]="pageSize"
+                          [pageSizeOptions]="pageSizeOptions"
+                          (page)="pageEvent = $event">
+            </mat-paginator>
+          </div> -->
+          <!-- <div *ngIf="pageEvent">
+              <h5>Page Change Event Properties</h5>
+              <div>List length: {{pageEvent.length}}</div>
+              <div>Page size: {{pageEvent.pageSize}}</div>
+              <div>Page index: {{pageEvent.pageIndex}}</div>
+          </div> -->
+          <!-- Pagination ends -->
+          <!-- Start Explore department -->
+          <div id="explore-dept" class="card">
+            <div class="card-body">
+              <h1>Browse Department</h1>
+              <div class="flex-container">
+                <div *ngFor="let catX of category$" class="p-2-brows">
+                  {{catX.name}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End Explore department -->
+        </div>
+        <div class="side-widget">
+          <div class="side-innner">
+              <widget-right></widget-right>
+          </div>         
+        </div>
+      </div>
+  </div>
+</div>
+<div>
+    <post-code [requestPost]="openPostInput"></post-code>
+</div>
+

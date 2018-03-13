@@ -1,0 +1,18 @@
+
+<div class="advert-list-container">
+        <h1>Adverts <small>
+            <a routerLink="/admin/advertisements/add">add</a>
+        </small></h1>
+        <div *ngFor="let ad of advert$ | async">
+            <span class="dept-item">
+                <span class="item">
+                    <img [src]="ad.image_url" alt="">
+                </span>
+                <span class="item"><a>{{ad.title}}</a></span>
+                <span class="item">
+                    <span id="group">{{ad.tag}}</span>
+                    <span><mat-icon (click)="removeAdvert(ad)">clear</mat-icon></span>
+                </span>
+            </span>
+        </div>
+    </div>

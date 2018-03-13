@@ -1,0 +1,70 @@
+
+<div class="container"> 
+    
+    <div class="order-container d-flex flex-column justify-content-around page-rule">
+        <div *ngIf="errMsg" class="errmsg">
+            <p>{{errMsg}}</p>
+        </div>
+        <div *ngIf="existingOrder" class="pending-order">
+            <p>You have a pending order</p>
+            <div class="order">
+                <span>Order N0: {{existingOrder.order_no}}</span>
+                <span>Amount: {{existingOrder.amount | currency: 'GBP': code}}</span>
+            </div>
+            <div class="actions">
+                <a (click)="deletePendingOrder()">Cancel pending order</a>
+                <button (click)="completePendingOrder()" mat-raised-button >Complete pending order</button>
+            </div>
+        </div>
+
+        <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between active-color">
+                <span class="mr-auto">Review your orders</span>
+                <h1>{{total | currency: 'GBP': code}}</h1>
+                <!-- <mat-icon >arrow_forward</mat-icon>  -->
+            </li>
+        </ul>
+        <div class="p-2 aside-check-cart">
+            <div *ngIf="currentUser" class="card-body-box jumbotron">
+                <h1>Ship to :</h1>
+                <p>{{currentUser.displayName}}</p>
+                <p>{{currentUser.address}}</p>
+                <p>{{currentUser.city}}</p>
+                <p>{{currentUser.post_code}}</p>
+                
+                <!-- <checkout-cart></checkout-cart> -->
+                <!-- <a mat-raised-button routerLink="/review_and_payment" >Review and Pay</a> -->
+            </div>
+        </div>
+    <div class="p-2 card-form">
+        <form [formGroup]="ordForm" (ngSubmit)="createOrder(ordForm.value)">
+            <div class="form-group">
+                <input hidden formControlName="order_no" type="text" class="form-control" id="" placeholder="Order Number">
+                <input hidden formControlName="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                <input hidden formControlName="uid" type="text" class="form-control" id="" placeholder="uid">
+                <input hidden formControlName="customer_no" type="text" class="form-control" id="" placeholder="customer no">
+                <input hidden formControlName="amount" type="text" class="form-control" id="" placeholder="Amount">
+                <input hidden formControlName="telephone" type="text" class="form-control" id="" placeholder="Telephone">
+                <input hidden formControlName="delivery_method" type="text" class="form-control" id="" placeholder="Delivery Method">
+                <input hidden formControlName="status" type="text" class="form-control" id="" placeholder="Order Status">
+                <input hidden formControlName="ip_address" type="text" class="form-control" id="" placeholder="Ip Address">
+            </div>
+    
+            <div class="form-group">
+                <label for="exampleTextarea">Note</label>
+                <input hidden formControlName="customer_name" type="text" class="form-control" id="" placeholder="Customer Name">
+                <textarea formControlName="note" class="form-control" id="exampleTextarea" placeholder="tell us what you want with your order" rows="3"></textarea>
+            </div>
+            
+            <button mat-raised-button type="submit" >Order and Continue to Payment</button>
+        </form>
+    </div>
+    <a routerLink="/check/payment">Bypass to payment</a>
+    </div>
+</div>
+<nge-load-spinner [start]="grayPage"></nge-load-spinner>
+<!-- <div *ngIf="grayPage" class="pageProcessCover">
+    <div class="center-point">
+        <mat-spinner></mat-spinner>
+    </div>
+</div> -->

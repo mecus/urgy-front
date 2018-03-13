@@ -1,0 +1,93 @@
+
+<div class="page-rule delivery-container container">
+    <div class="delivery-inner d-flex flex-row justify-content-center">    
+        <div class="delivery card">
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between active-color">
+                    <span class="mr-auto">Delivery Methods</span>
+                    <span *ngIf="selectAddress && selectAddress.address" (click)="goToDeliveryOption()">Next to delivery options</span>
+                    <mat-icon *ngIf="selectAddress && selectAddress.address" (click)="goToDeliveryOption()" >arrow_forward</mat-icon> 
+                </li>
+            </ul>
+            <div class="card-body">
+                <div class="d-flex flex-column jumbotron">
+                    <h2 attr="ophead" >Delivery Address</h2>
+                    <div *ngIf="currentUser" class="d-flex flex-column justify-content-between">
+                        <h1>{{currentUser.displayName}}</h1>
+                        <p>{{currentUser.address}}, <span>{{currentUser.city}}.</span></p>
+                        <!-- <p>{{currentUser.address.city}}</p> -->
+                        <p>{{currentUser.post_code}} .</p>
+                        <!-- <mat-checkbox (change)="useAsdevivery($event)"></mat-checkbox> -->
+                    </div>
+                    <!-- <strong style="color:#E91E63;" *ngIf="updateNotice">Please save your changes below.</strong> -->
+                    <a (click)="addAddress()" mat-raised-button >Add New Delivery Address</a>
+                </div>
+            
+                <form *ngIf="addressForm" [formGroup]="deliveryForm" (ngSubmit)="deliveryAddress(deliveryForm.value)" class="delivery-form">  
+                    <!-- <address-search *ngIf="!updateNotice" (address)="addressFound($event)" ></address-search> -->
+                    <!-- <mat-input-container class="example-full-width">
+                        <input matInput placeholder="Company" placeholder="company">
+                    </mat-input-container> -->
+                    <p>{{errorMsg}}</p>
+                    <table class="example-full-width" cellspacing="0">
+                        <tr>
+                            <td><mat-input-container class="example-full-width">
+                            <input formControlName="displayName" matInput placeholder="Full name">
+                            </mat-input-container></td>
+                        </tr>
+                    </table>
+
+                    <p>
+                        <mat-input-container class="example-full-width">
+                        <input formControlName="address" matInput placeholder="Address">
+                        </mat-input-container>
+                    </p>
+
+                    <table class="example-full-width" cellspacing="0"><tr>
+                        <td><mat-input-container class="example-full-width">
+                        <input formControlName="city" matInput placeholder="City">
+                        </mat-input-container></td>
+                        <td><mat-input-container class="example-full-width">
+                        <input formControlName="country" matInput placeholder="Country">
+                        </mat-input-container></td>
+                        <td><mat-input-container class="example-full-width">
+                        <input formControlName="post_code" matInput   placeholder="Postal Code" >
+                        <!--<mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>-->
+                        </mat-input-container></td>
+                    </tr></table>
+                    <!--<p>
+                        <mat-radio-group>
+                            <mat-radio-button value="1">Deliver to this Address</mat-radio-button>
+                            <br>
+                            <mat-radio-button value="2">Deliver to different address</mat-radio-button>
+                        </mat-radio-group>
+                    </p>-->
+                    <div class="submit-btn">
+                        <button mat-raised-button id="submit-btn"  type="submit">Submit</button>
+                        <a (click)="addAddress()" style="background-color: red;" mat-raised-button >Cancel</a>
+                    </div>
+                </form>
+
+            </div>
+            <div class="deliveryOption d-flex flex-column jumbotron">
+                <div class="d-flex flex-column justify-content-between">
+                    <h2 attr="ophead">Mail Delivery Options</h2>
+                    <mat-radio-group (change)="selectOption($event)" class="radio-group d-flex flex-column">
+                        <mat-radio-button class="radio-button" *ngFor="let option of deliveryoptions" [value]="option">
+                            {{option.option}} {{option.price | currency:'GBP' : code }}
+                        </mat-radio-button>
+                    </mat-radio-group>
+                    <small class="example-selected-value">Royal mail 5 - 10 Working days if no option was selected</small>
+            
+                </div>
+                <!-- <strong style="color:#E91E63;" *ngIf="updateNotice">Please save your changes below.</strong> -->
+                <!-- <a (click)="goTo()" mat-raised-button >Continue</a> -->
+            </div>
+            <div class="submit jumbotron">
+                <a (click)="goToOrder()" mat-raised-button >Continue</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- <nge-load-spinner [start]="grayPage"></nge-load-spinner> -->

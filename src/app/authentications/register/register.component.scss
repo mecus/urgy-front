@@ -1,0 +1,150 @@
+//Progress Bar Section
+// .example-h2 {
+//   margin: 10px;
+// }
+// .progress-bar {
+//     height: 1rem;
+//     color: #fff;
+//     background-color: transparent;
+// }
+.mobile-background{
+    height: 100vh;
+    background: #ffffff;
+    background-image: url('/assets/images/arabesque.png');
+    // background-size: cover;
+    background-repeat: repeat;
+    overflow-y: scroll;
+
+}
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 5px;
+}
+
+.example-margin {
+  margin: 0 5px;
+}
+small#errMsg{
+    padding-left: 20px;
+}
+.register-container{
+    max-width: 700px;
+    min-height: 500px;
+    margin: 0 auto;
+    margin-top: 0px;
+    padding-bottom: 100px;
+    background-color: #ffffff;
+    .list-group{
+        .list-group-item{
+            border-radius: 0;
+            background-color: #00796B;
+            color: #ffffff;
+            height: 50px;
+            mat-icon{
+              // line-height: 50px;
+            }
+            span{
+              margin-left: 10px;
+              // line-height: 50px;
+            }
+        }
+    }
+    .input-full-width{
+        width: 100%;
+    }
+    .submit-button{
+        position: relative;
+        float: right;
+    }
+    .search-head{
+        border-radius: 0 0;
+        background-color: #ffffff;
+        margin: 0px;
+        padding: 0px;
+        padding: 10px 20px;
+        border-left: 0px;
+        border-right: 0px;
+    }
+}
+div.search-postcode{
+    display: flex;
+    justify-content: space-between;
+    a{
+        height: 40px;
+    }
+    .postError{
+        border: 1px solid brown;
+        
+    }
+}
+div.search-result{
+    margin-top: 20px;
+}
+p#post-err{
+    font-size: 11px;
+    color: brown;
+    padding: 0px;
+    margin: 0px;
+    margin-bottom: 10px;
+    margin-left: 80px;
+}
+.input-full-width{
+    width: 100%;
+}
+.registration-form {
+  max-width: 700px;
+}
+
+.example-full-width {
+  width: 100% !important;
+}
+.contact-permit{
+    margin: 0px;
+    padding: 0px;
+    padding: 10px 20px;
+    // margin-bottom: 20px;
+    margin: 10px !important;
+    background-color: #ffffff;
+    h2{
+        margin: 0px;
+        font-size: 18px;
+        margin: 5px 0px;
+    }
+    p{
+        font-size: 12px;
+        color: lightslategrey;
+    }
+}
+.submit-terms{
+    margin: 10px !important;
+}
+.form-sec-1{
+    margin: 0px;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    margin: 10px !important;
+    // border-color: lightgrey !important;
+}
+.more-info{
+    background-color: #ffffff;
+    margin: 10px !important;
+}
+.flex-container{
+    flex-direction: row;
+    justify-content: space-between;
+
+    mat-input-container{
+        width: 300px !important;
+    }
+}
+@media only screen and (max-width: 768px){
+    .flex-container{
+        flex-direction: column;
+    
+        mat-input-container{
+            width: 100% !important;
+        }
+    }
+}

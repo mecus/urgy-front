@@ -1,0 +1,74 @@
+// Listing Department
+.advert-list-container{
+    width: 500px;
+    h1{
+        font-family: 'Open Sans Bold', sans-serif;
+        font-size: 1.5em;
+        padding-top: 20px;
+        text-transform: uppercase;
+        small{
+            font-size: .6em;
+            color: lightgrey;
+          
+        }
+    }
+    .dept-item{
+        display: flex;
+        justify-content: space-between;
+        margin: 5px 0px;
+        padding-right: 20px;
+        background-color: #ffffff;
+        align-items: center;
+        &:hover{
+            background-color: lighten(lightgrey , 12%);
+            cursor: pointer;
+        }
+        .item{
+            img{width: 50px;}
+        }
+        .item:nth-child(2){
+            text-transform: uppercase;
+        }
+        .item:nth-child(3){
+            color: lighten(lightslategrey,  20%);
+            display: flex;
+            justify-content: flex-end;
+            span#group{
+                margin-right: 20px;
+            }span mat-icon {
+                color: lighten(lightslategrey, 30%);
+                &:hover{
+                    cursor: pointer;
+                    color: red;
+                }
+            }
+
+        }
+        
+    }
+    
+}
+
+// Adding Advert
+.example-container {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    padding: 20px;
+    .input-field{
+        display: flex;
+        justify-content: space-between;
+
+    }
+    .input-field>* {
+        width: 100%;
+        margin-right: 10px;
+    }
+    .file-input{
+        margin: 20px 0px;
+    }
+  }
+  
+  .example-container > * {
+    width: 100%;
+  }

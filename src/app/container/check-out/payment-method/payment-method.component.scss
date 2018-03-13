@@ -1,0 +1,106 @@
+
+div.stripebutton{
+    // display: flex;
+    // flex-direction: row;
+    // justify-content: space-around;
+    text-align: center;
+    padding-top: 50px;
+    button{
+        width: 100%;
+    }
+    h2{
+        text-align: center;
+        margin: 0px;
+        padding: 0px;
+        padding-bottom: 20px;
+    }
+    // text-align: center;
+}
+.page-container{
+    min-height: 500px;
+}
+.card-form{
+    width: 600px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+div.example-form{
+    width: 100% !important;
+}
+mat-input-container{
+    width: 100% !important;
+}
+div.example-full-width{
+    width: 100% !important;
+   
+}
+ input{
+    width: 100% !important;
+}
+table tr td{
+    width: 300px;
+    
+}
+div.aside-check-cart{
+    width: 100%;
+}
+.pageProcessCover{
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    background-color: #fff;
+    opacity: 0.4;
+    height: 100vh;
+    z-index: 100;
+    margin: 0 auto;
+    .center-point{
+        position: absolute;
+        top: 45%;
+        left: 45%;
+        margin: 0 auto;
+    }
+}
+#card-fetch{
+    margin: 0 auto;
+    width: 600px;
+    margin-top: 40px;
+    padding: 0px !important;
+    border: none !important;
+    .card-header{
+        margin: 0px !important;
+        .proceed-button a{
+            background-color: #00796B;
+            color: #ffffff;
+            text-decoration: none;
+        }
+    }
+    .list-group{
+        .list-group-item{
+            border-radius: 0;
+            background-color: #ffffff;
+            color: #00796B;
+            height: 50px;
+            border: none;
+            border-bottom: 1px solid lighten(lightgray, 10%);
+            mat-icon{
+              // line-height: 50px;
+            }
+            span{
+              margin-right: 10px;
+              font-family: 'Open Sans Light', sans-serif;
+              // line-height: 50px;
+            }
+          
+        }
+    }
+}
+div.check-box{
+    margin-top: 10px;
+}
+div#pay-card{
+    display: none;
+}
+div.proceed-button{
+    position: relative;
+    float: right;
+}

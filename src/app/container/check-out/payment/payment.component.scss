@@ -1,0 +1,61 @@
+.main-container{
+    margin: 40px auto;
+    width: 50%;
+    background-color: #ffffff;
+    .payment-center{
+        padding: 1em;
+        .payment{
+            .order, .pay{
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                span{
+                    margin-right: 20px;
+                    font-size: 1.2em;
+                    mat-icon{
+                        font-size: 2em;
+                        color: #00796B;
+                    }
+                }
+            }
+        }
+        button{
+            margin: 20px 0px;
+            width: 100%;
+            font-size: 1.5em;
+            text-transform: uppercase;
+            background-color: #00796B;
+            color: #ffffff;
+        }
+        button[attr='pay']{
+            display: block;
+            background-color: #ffffff;
+            color: #00796B;
+        }
+        button[attr='finish']{
+            display: none;
+        }
+
+    }
+}
+.payment-completed{
+    margin-top: 50px;
+    width: 500px;
+    display: none;
+}
+.pageProcessCover{
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    background-color: #fff;
+    opacity: 0.4;
+    height: 100vh;
+    z-index: 100;
+    margin: 0 auto;
+    .center-point{
+        position: absolute;
+        top: 45%;
+        left: 45%;
+        margin: 0 auto;
+    }
+}

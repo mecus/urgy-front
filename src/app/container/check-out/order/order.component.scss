@@ -1,0 +1,131 @@
+$blue: #5db6e8;
+$darkBlue: #282c37;
+$red: #E53A40;
+$green: #8CD790;
+
+.order-container{
+    margin: 0 auto;
+    padding-top: 20px;
+    max-width: 700px;
+    .errmsg{
+        background-color: $red;
+        margin-bottom: 5px;
+        p{
+            padding: 0;
+            margin: 0;
+            padding: 10px;
+            color: $darkBlue;
+            font-family: 'Open Sans Regular', sans-serif;
+        }
+    }
+    .pending-order{
+        background-color: #ffffff;
+        padding: 20px;
+        margin-bottom: 20px;
+        .order{
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            span{
+                margin-left: 20px;
+            }
+        }
+        p{
+            font-family: 'Open Sans Regular', sans-serif;
+            font-size: 1.5em;
+        }
+        .actions{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            a{
+                color: $red;
+                cursor: pointer;
+                &:hover{
+                    color: lighten($red , 20%);
+                }
+            }
+        }
+    }
+    .list-group{
+        .list-group-item{
+            border-radius: 0;
+            background-color: #00796B;
+            color: #ffffff;
+            height: 50px;
+            h1{
+                color: #ffffff;
+                font-family: 'Open Sans Regular', sans-serif;
+                font-size: 1.5em;
+            }
+            mat-icon{
+              // line-height: 50px;
+            }
+            span{
+              margin-right: 10px;
+              font-family: 'Open Sans Light', sans-serif;
+              // line-height: 50px;
+            }
+        }
+    }
+    .aside-check-cart{
+        .card-body-box{
+            background-color: #ffffff;
+            h1{
+                font-size: 1.5em;
+                font-family: 'Open Sans Regular', sans-serif;
+            }
+            p{
+                margin: 0;
+                padding: 0;
+                color: lightslategray;
+                font-family: 'Open Sans Light', sans-serif;
+            }
+        }
+    }
+}
+
+
+.card-form{
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+div.example-form{
+    width: 100% !important;
+}
+mat-input-container{
+    width: 100% !important;
+}
+div.example-full-width{
+    width: 100% !important;
+   
+}
+ input{
+    width: 100% !important;
+}
+table tr td{
+    width: 300px;
+    
+}
+div.aside-check-cart{
+    margin: 0px !important;
+    padding: 0px !important;
+    width: 100%;
+}
+// .pageProcessCover{
+//     position: fixed;
+//     width: 100%;
+//     top: 0px;
+//     background-color: #fff;
+//     opacity: 0.4;
+//     height: 100vh;
+//     z-index: 100;
+//     margin: 0 auto;
+//     .center-point{
+//         position: absolute;
+//         top: 45%;
+//         left: 45%;
+//         margin: 0 auto;
+//     }
+// }

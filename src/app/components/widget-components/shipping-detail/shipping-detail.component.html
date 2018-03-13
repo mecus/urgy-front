@@ -1,0 +1,28 @@
+<div *ngIf="checkMsg" class="d-flex justify-content-between check-notice w3-card-2">
+    <span><p >{{checkMsg}}</p></span> 
+    <span><mat-icon>error_outline</mat-icon> </span>
+</div>
+<div class="shopping-container w3-card-2">
+    <div class="shp-header d-flex flex-row justify-content-between">
+        <span><mat-icon routerLink="/shop/basket">shopping_cart</mat-icon></span>
+        <h1>Your Shopping</h1>
+        <a routerLink="/shop/basket"> <mat-icon id="see-cart">visibility</mat-icon></a>
+    </div>
+    <div class="shopping-total d-flex flex-row justify-content-between">
+        <h2 id="shop-total">Shopping Total: </h2>
+        <h2><strong><cart-total></cart-total></strong></h2>
+    </div>
+    <div class="your-post d-flex flex-row justify-content-between">
+        <p><strong>Your Postcode: </strong> </p>
+        <p>{{postCode}}</p>
+    </div>
+
+    <div class="min-order">
+        <p>£40 minimum order for delivery</p>
+    </div>
+
+    <div class="check-button">
+        <a role="button" mat-raised-button (click)="checkOut()">CHECK OUT</a>
+    </div>
+
+</div>

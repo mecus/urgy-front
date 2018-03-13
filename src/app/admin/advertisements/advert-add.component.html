@@ -1,0 +1,36 @@
+<div class="add-advert-container">
+    <p>Add Advert</p>
+</div>
+<form novalidate [formGroup]="formInput" (ngSubmit)="sendAdvert(formInput.value)" class="example-container">
+        <small [style.color]="color">{{statusdMsg}}</small>
+        <div class="input-field">
+            <mat-form-field>
+                <input matInput formControlName="title" placeholder="Advert Title">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput formControlName="tag" placeholder="Tag">
+            </mat-form-field>
+        </div>
+        <div class="input-field">
+            <mat-form-field>
+                <mat-select formControlName="section" placeholder="Select Section">
+                    <!-- <mat-option>None</mat-option> -->
+                    <mat-option *ngFor="let sec of sections" [value]="sec">
+                        {{sec}}
+                    </mat-option>
+                </mat-select>
+                <!-- <input matInput formControlName="section" placeholder="Section"> -->
+            </mat-form-field>
+            <!-- <mat-form-field>
+                <input matInput placeholder="Feature Image">
+            </mat-form-field> -->
+        </div>
+    
+        <div class="file-input">
+            <input (change)="fileCahnge($event)" type="file">
+        </div>
+    
+        <div class="submit">
+            <button mat-raised-button type="submit">Submit</button>
+        </div>
+    </form>

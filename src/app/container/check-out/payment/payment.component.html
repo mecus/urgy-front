@@ -1,0 +1,58 @@
+
+<div class="main-container">
+  
+  <div class="payment-center">
+    <div class="payment">
+      <h1>Time to make payment</h1>
+      <div class="order">
+        <span>
+            <mat-icon>check</mat-icon>
+        </span>
+        <span>
+          Your Order was received
+        </span>
+      </div>
+      <div class="pay">
+          <span>
+              <mat-icon>close</mat-icon>
+          </span>
+          <span>
+            Payment
+          </span>
+        </div>
+      
+    </div>
+    <button attr='pay' (click)="createTransaction()" mat-raised-button>Pay Now</button>
+    <button attr='finish' mat-raised-button>Finish</button>
+
+  </div>
+
+
+  <!-- <div class="card text-center">
+    <div class="card-header">
+      Finish your order now
+    </div>
+    <div class="card-block">
+      <h4 class="card-title">Special title treatment</h4>
+      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      <a (click)="finishOrder(order.amount, order.customer_no, order.order_no)" mat-raised-button >Finish Order</a>
+    </div>
+    <div class="card-footer text-muted">
+      your order will be dispatched within 24hrs after full payment is recieved!
+    </div>
+  </div> -->
+</div>
+<div class="payment-completed container jumbotron">
+  <h1>Your Order Status: <small>{{status}}</small></h1>
+  <small>{{acceptedMsg}}</small>
+  <small>{{declineMsg}}</small>
+  <p *ngIf="processMsg">{{processMsg}}</p>
+  <a *ngIf="acceptedMsg" mat-raised-button routerLink="/">Close page</a>
+  <a *ngIf="declineMsg" mat-raised-button routerLink="/payment_method">Try again</a>
+</div>
+
+<div *ngIf="grayPage" class="pageProcessCover">
+    <div class="center-point">
+        <mat-spinner></mat-spinner>
+    </div>
+</div>

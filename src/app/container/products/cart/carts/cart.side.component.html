@@ -1,0 +1,46 @@
+<div class="jumbotron-clone" *ngIf="cart$" >
+        
+    <div *ngFor="let cat of cart$" class="colC">
+        <div class="d-flex justify-content-between cart-list">
+            <div class="p-2 img-hero">
+                <img [src]="cat.imageUrl"  alt="prod-image">
+            </div>
+            <div class="p-2 line-hero">
+                <div class="line-hero-inner d-flex justify-content-between">
+                    <div class="p-2">
+                        <p>{{cat.name}}</p>
+                    </div>
+                    <div class="p-2">
+                        <p>qty: {{cat.qty}}</p>
+                    </div>
+                    <div class="p-2">
+                        <p>{{cat.qty * catprice | currency : 'GBP' :true}}</p>
+                    </div>
+                </div>
+
+                <div class="line-hero-inner d-flex justify-content-between">
+                    <div class="p-2">
+                        <div class="d-flex qty-control">
+                            <div class="p-2 dec" (click)="decrement(cat, $event)"><mat-icon>remove</mat-icon></div>
+
+                            <div class="p-2 inc" (click)="increment(cat)"><mat-icon>add</mat-icon></div>
+                        </div>
+                    </div>
+                    <div class="p-2 delet-but">
+                        <p (click)="removeItem(cat)"><mat-icon>delete</mat-icon></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="toggle" id="more" class="more-cart" (click)="seeMoreCart()">
+    <!-- <small>more</small> -->
+    <mat-icon>expand_more</mat-icon>
+    
+</div>
+<div *ngIf="toggle" id="less" class="less-cart" (click)="seeLessCart()">
+    <mat-icon>expand_less</mat-icon>
+    <!-- <small>less</small> -->
+</div>
